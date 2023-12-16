@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-    <t t-name="owl_playground.todo" owl="1">
-        <p t-att-class="{'text-muted text-decoration-line-through': props.done}">
-            <input class="form-check-input me-2" type="checkbox" t-att-checked="props.done" t-on-click="toggleState"/>
-            <t t-esc="props.id"></t>.
-            <t t-esc="props.description"></t>
-            <span class="fa fa-remove ms-2" t-on-click="removeTodo" style="color: red; cursor: pointer"/>
-        </p>
+    <t t-name="owl_playground.Todo" owl="1">
+        <div class="form-check">
+            <input class="form-check-input me-2" type="checkbox" t-att-id="props.id" t-att-checked="props.done" t-on-click="handleClick"/>
+            <label class="form-check-label" t-att-for="props.id" t-att-class="{'text-muted text-decoration-line-through': props.done}">
+                <t t-esc="props.id"></t>.
+                <t t-esc="props.description"></t>
+            </label>
+            <span class="fa fa-remove ms-2" t-on-click="handleRemove" style="color: red; cursor: pointer"/>
+        </div>
     </t>
 </templates>

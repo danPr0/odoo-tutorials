@@ -1,35 +1,33 @@
 /** @odoo-module **/
 
-import { Component, onMounted, useRef, useState } from '@odoo/owl'
 import { Todo } from '../todo/todo'
 import { useAutofocus } from '../../js/utils'
 
+const { Component, useState } = owl
+
 export class TodoList extends Component {
-    static template = 'owl_playground.todo_list'
-    static components = { Todo }
-
-    // inputRef = useRef('input')
-
     setup() {
         this.todoList = useState([
             { id: 0, description: 'buy milk', done: false },
             { id: 1, description: 'buy eggs', done: true },
             { id: 2, description: 'buy avocado', done: true },
         ])
-        useAutofocus('input')
+        useAutofocus('todoListInput')
     }
 
     addTodo(event) {
-        let input = event.target.value
+        const input = event.target.value
         if (event.keyCode === 13 && input !== '') {
-            this.todoList.push({id: this.todoList.length, description: input, done: false})
+            this.todoList.push({ id: this.todoList.length, description: input, done: false })
             event.target.value = ''
         }
     }
 
-    toggleState(id) {
-        let todo = this.todoList.find(t => t.id === id)
-        todo.done = !todo.done
+    toggleTodo(id) {
+        const todo = this.todoList.find(t => t.id === id)
+        if (todo) {
+            todo.done = !todo.done
+        }
     }
 
     removeTodo(id) {
@@ -39,3 +37,6 @@ export class TodoList extends Component {
         }
     }
 }
+
+TodoList.template = 'owl_playground.TodoList'
+TodoList.components = { Todo }

@@ -1,11 +1,11 @@
 /** @odoo-module **/
 
-import { Component } from '@odoo/owl'
+const { Component } = owl
 
 export class Card extends Component {
 }
 
-Card.template = 'owl_playground.Card'
+Card.template = 'awesome_tshirt.Card'
 Card.props = {
     slots: {
         type: Object,
@@ -13,5 +13,9 @@ Card.props = {
             default: Object,
             title: { type: Object, optional: true },
         },
+    },
+    class: {
+        type: String,
+        optional: true,
     },
 }

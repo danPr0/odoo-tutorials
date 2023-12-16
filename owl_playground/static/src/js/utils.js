@@ -1,11 +1,11 @@
 /** @odoo-module **/
 
-import { useEffect, useRef } from '@odoo/owl'
+const { useEffect, useRef } = owl
 
 export function useAutofocus(name) {
     let ref = useRef(name)
     useEffect(
-        (el) => el && el.focus(),
+        el => el && el.focus(),
         () => [ref.el],
     )
 }

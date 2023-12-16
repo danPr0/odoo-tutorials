@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-    <t t-name="owl_playground.todo_list" owl="1">
-        <div class="my-2">
-            <input class="form-control w-25" placeholder="Add a todo" t-on-keyup="addTodo" t-ref="input"></input>
+    <t t-name="owl_playground.TodoList" owl="1">
+        <div class="mt-2">
+            <input class="form-control mb-2 w-25" placeholder="Add a todo" t-on-keyup="addTodo" t-ref="todoListInput"></input>
+            <t t-foreach="todoList" t-as="todo" t-key="todo.id">
+                <Todo id="todo.id" description="todo.description" done="todo.done" toggleState.bind="toggleTodo" removeTodo.bind="removeTodo"/>
+            </t>
         </div>
-        <t t-foreach="todoList" t-as="todo" t-key="todo.id">
-            <Todo id="todo.id" description="todo.description" done="todo.done" toggleState.bind="toggleState" removeTodo.bind="removeTodo"/>
-        </t>
     </t>
 </templates>

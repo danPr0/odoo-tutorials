@@ -1,10 +1,8 @@
 /** @odoo-module **/
 
-import { Component, useState } from '@odoo/owl'
+const { Component, useState } = owl
 
 export class Counter extends Component {
-    static template = 'owl_playground.counter'
-
     setup() {
         this.state = useState({ value: 0 })
     }
@@ -13,3 +11,5 @@ export class Counter extends Component {
         this.state.value++
     }
 }
+
+Counter.template = 'owl_playground.Counter'
