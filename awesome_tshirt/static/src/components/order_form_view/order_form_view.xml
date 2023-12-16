@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_tshirt.OrderFormView" t-inherit="web.FormView" t-inherit-mode="primary" owl="1">
+        <xpath expr="//button[hasclass('o_form_button_create')]" position="after">
+            <t t-if="model.root.resId">
+                <button class="btn" t-att-class="isPrintButtonPrimary ? 'btn-primary': 'btn-secondary'" t-on-click="debouncedPrintLabel">
+                    Print Label
+                </button>
+            </t>
+        </xpath>
+    </t>
+</templates>

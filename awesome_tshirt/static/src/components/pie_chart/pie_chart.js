@@ -26,7 +26,7 @@ export class PieChart extends Component {
         })
     }
 
-    onPieClick(event, chartElem) {
+    onPieClick(ev, chartElem) {
         const clickedIndex = chartElem[0]._index;
         this.props.onPieClick(this.labels[clickedIndex]);
     }

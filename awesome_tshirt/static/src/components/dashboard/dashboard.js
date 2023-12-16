@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import { _t } from "@web/core/l10n/translation";
+import { _t } from '@web/core/l10n/translation'
 import { registry } from '@web/core/registry'
 import { Layout } from '@web/search/layout'
 import { getDefaultConfig } from '@web/views/view'
@@ -24,7 +24,6 @@ class AwesomeDashboard extends Component {
         })
 
         this.action = useService('action')
-        this.rpc = useService('rpc')
         this.tshirtService = useService('tshirtService')
 
         this.display = {
