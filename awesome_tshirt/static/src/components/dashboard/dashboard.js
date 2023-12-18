@@ -1,19 +1,20 @@
 /** @odoo-module **/
 
+import { Domain } from '@web/core/domain'
 import { _t } from '@web/core/l10n/translation'
 import { registry } from '@web/core/registry'
+import { useService } from '@web/core/utils/hooks'
+import { sprintf } from '@web/core/utils/strings'
 import { Layout } from '@web/search/layout'
 import { getDefaultConfig } from '@web/views/view'
-import { useService } from '@web/core/utils/hooks'
-import { Domain } from '@web/core/domain'
-import { sprintf } from '@web/core/utils/strings'
 
 import { Card } from '../card/card'
+import { CustomerAutocomplete } from '../customer_autocomplete/customer_autocomplete'
 import { PieChart } from '../pie_chart/pie_chart'
 
-const { Component, onWillStart, useSubEnv } = owl
+const { Component, useSubEnv, useState } = owl
 
-class AwesomeDashboard extends Component {
+export class AwesomeDashboard extends Component {
 
     setup() {
         useSubEnv({
@@ -24,7 +25,8 @@ class AwesomeDashboard extends Component {
         })
 
         this.action = useService('action')
-        this.tshirtService = useService('tshirtService')
+        const tshirtService = useService('tshirt_service')
+        this.statistics = useState(tshirtService.statistics)
 
         this.display = {
             controlPanel: { 'top-right': false, 'bottom-right': false },
@@ -36,8 +38,6 @@ class AwesomeDashboard extends Component {
             nb_new_orders: _t('Number of new orders this month'),
             total_amount: _t('Total amount of new orders this month'),
         }
-
-        onWillStart(async () => this.statistics = await this.tshirtService.loadStatistics())
     }
 
     openCustomersView() {
@@ -74,7 +74,7 @@ class AwesomeDashboard extends Component {
     }
 }
 
-AwesomeDashboard.components = { Layout, Card, PieChart }
+AwesomeDashboard.components = { Layout, Card, PieChart, CustomerAutocomplete }
 AwesomeDashboard.template = 'awesome_tshirt.clientaction'
 
-registry.category('actions').add('awesome_tshirt.dashboard', AwesomeDashboard)
+registry.category('lazy_components').add('AwesomeDashboard', AwesomeDashboard)

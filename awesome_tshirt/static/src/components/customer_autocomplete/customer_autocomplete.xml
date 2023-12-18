@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_tshirt.CustomerAutocomplete" owl="1">
+        <AutoComplete value="''" sources="sources" placeholder="'Search order by customer'" onSelect.bind="onSelect"/>
+    </t>
+</templates>

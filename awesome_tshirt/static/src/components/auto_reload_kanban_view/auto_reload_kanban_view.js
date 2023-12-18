@@ -3,7 +3,7 @@
 import { registry } from '@web/core/registry'
 import { KanbanController } from '@web/views/kanban/kanban_controller'
 import { kanbanView } from '@web/views/kanban/kanban_view'
-import { useInterval } from "../../js/utils"
+import { useInterval } from '../../js/utils'
 
 export class AutoReloadKanbanController extends KanbanController {
     setup() {
@@ -14,7 +14,7 @@ export class AutoReloadKanbanController extends KanbanController {
     }
 }
 
-const AutoReloadKanbanView = {
+export const AutoReloadKanbanView = {
     ...kanbanView,
     Controller: AutoReloadKanbanController,
 }

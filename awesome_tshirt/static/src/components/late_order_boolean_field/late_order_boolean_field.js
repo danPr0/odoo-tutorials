@@ -1,7 +1,7 @@
 /** @odoo-module **/
 
 import { registry } from '@web/core/registry'
-import { BooleanField } from "@web/views/fields/boolean/boolean_field";
+import { BooleanField } from '@web/views/fields/boolean/boolean_field'
 
 export class LateOrderBooleanField extends BooleanField {
 }
