@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_tshirt.CustomerKanbanView" t-inherit="web.KanbanView" t-inherit-mode="primary" owl="1">
+        <xpath expr="//t[@t-component='props.Renderer']" position="before">
+            <div class="bg-white border-end overflow-auto o_awesome_tshirt_sidebar">
+                <CustomerList selectCustomer.bind="selectCustomer"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//Layout" position="attributes">
+            <attribute name="className">model.useSampleModel ? 'o_view_sample_data' : 'd-flex'</attribute>
+        </xpath>
+    </t>
+</templates>
